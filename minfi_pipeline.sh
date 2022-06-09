@@ -1,4 +1,19 @@
-script_base=/data/sperm-qt/ # use '/' at end
+### Pathnames to change before running pipeline
+# Pathname to the minfi pipeline directory that was downloaded from github. (Make sure to include a '/' at the end')
+script_base=/Users/chadpollard/Downloads/Minfi_Pipeline-main/
+
+# Pathname to the basedirectory that contains all files relevant to the study
+base_dir="/data/${name}/" 
+
+#Name of the basedirectory that contains all files relevant to the study (Make sure it is just the name of the directory, not the pathname)
+name=neogen
+
+# Name of the Sample Sheet inside your basedirectory that contains all the sample metadata. (Make sure the first three columns are 'Sample_Name','Sentrix_ID','Sentrix_Position')
+sample_sheet=Neogen_Sample_Sheet.csv
+
+
+
+# Pathname to the basedirectory that contains all 
 additional_files_base="${script_base}additional_files/"
 minfi_script="${script_base}src/array_preprocessing.R"
 sperm_age_script="${script_base}src/calc_sperm_age.R"
@@ -8,10 +23,6 @@ sperm_age_model="${additional_files_base}GLA_Model.rds"
 
 
 # batch info
-name=neogen
-sample_sheet=Neogen_Sample_Sheet.csv # i always get errors in minfi unless explicitly name the sample_sheet
-base_dir="/data/${name}/" # use '/' at end
-#base_dir="/data/fazst/"
 input_dir=$base_dir
 output_dir=$base_dir
 #sample_sheet=Inherent_Infinium_MethyEPIC_QC_Report_${name}.csv
@@ -27,32 +38,5 @@ echo ""
 
 Rscript $minfi_script --model $sperm_age_model --sperm_age_script $sperm_age_script --input_dir $input_dir --output_dir $output_dir --sample_sheet $sample_sheet --name $name --betas --mvals --analyze
 
-# ######################
-# ## STABILITY SCORES ##
-# ######################
-# echo ""
-# echo "**** RUNNING STABILITY SCRIPT ****"
-# echo ""
-
-# python $stability_script --output_dir $output_dir --name $name --mvals $mvals --cutoffs $additional_files_base"all_promoters_no_tx_FAZST.csv" --overlap $additional_files_base"promoters_epic_overlap.tsv" 
-
-# python $stability_script --output_dir $output_dir --name $name --mvals $mvals --cutoffs $additional_files_base"all_promotors_IUI.csv" --overlap $additional_files_base"promoters_epic_overlap.tsv"
-
-# python $stability_script --output_dir $output_dir --name $name --mvals $mvals --cutoffs $additional_files_base"top_1000_no_tx_FAZST.csv" --overlap $additional_files_base"promoters_epic_overlap.tsv"
-
-# python $stability_script --output_dir $output_dir --name $name --mvals $mvals --cutoffs $additional_files_base"top_1000_IUI.csv" --overlap $additional_files_base"promoters_epic_overlap.tsv"
-
-# python $stability_script --output_dir $output_dir --name $name --mvals $mvals --cutoffs $additional_files_base"top_1230_no_tx_FAZST.csv" --overlap $additional_files_base"promoters_epic_overlap.tsv"
-
-# python $stability_script --output_dir $output_dir --name $name --mvals $mvals --cutoffs $additional_files_base"top_1230_IUI.csv" --overlap $additional_files_base"promoters_epic_overlap.tsv"
-
-# # this is the new stability file after fixing DLK1 values
-# python $stability_script --output_dir $output_dir --name $name --mvals $mvals --cutoffs $additional_files_base"top_1233_IUI.csv" --overlap $additional_files_base"promoters_epic_overlap.tsv"
-
-# ################
-# ## MERGE DATA ##
-# ################
-# echo ""
-# echo "**** MERGING DATA ****"
-# echo ""
-# python $merge_script --input_dir $input_dir --output_dir $output_dir --name $name --stability_suffix _stability_scores.csv --minfi_suffix _minfi_results.csv --sample_sheet $sample_sheet_path
+# Outputs included: beta_values, m_values, p_values, QC_report, minfi_results
+# Outputs included in minfi_results: Sperm_Age, DLK1 Mean, Methylation Signal Intensities, SNP rs values
