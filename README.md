@@ -1,2 +1,1 @@
-# sperm-qt
-SpermQT pipeline
+# Minfi Pipeline
