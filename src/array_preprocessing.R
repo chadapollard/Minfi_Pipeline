@@ -71,11 +71,11 @@ cat("\n**GRABBING SAMPLE SHEET**\n\n")
 targets = read.metharray.sheet(base=input_dir, pattern = sample_sheet, ignore.case = TRUE, recursive = TRUE, verbose = TRUE)
 
 ## load methylation data
-cat("\n**LOADING SAMPLES**\n\n")
+cat("\n**LOADING IDAT FILES**\n\n")
 RGset<-read.metharray.exp(targets=targets,recursive=TRUE,force=TRUE)
 
 ## normalize data
-cat("\n**NORMALIZING DATA**\n\n")
+cat("\n**NORMALIZING DATA (SWAN)**\n\n")
 grSet = preprocessSWAN(RGset)
 
 ## QC check
