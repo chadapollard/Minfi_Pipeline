@@ -1,15 +1,15 @@
 ### Pathnames to change before running pipeline
 # Pathname to the minfi pipeline directory that was downloaded from github. (Make sure to include a '/' at the end')
-script_base=/Users/chadpollard/Documents/My_Github/Minfi_Pipeline/
+script_base=/Volumes/Research_Data/My_Github/Minfi_Pipeline/
 
 # Pathname to the basedirectory that contains all files relevant to the study
-base_dir="/Users/chadpollard/Desktop/Endometrial_Tissue/Letourneau_MethylationEPIC_20201007" 
+base_dir="/Volumes/Research_Data/Research_Data/Endometrial_Tissue/Endometrial_Tissue_Dataset_450K" 
 
 #Name of the basedirectory that contains all files relevant to the study (Make sure it is just the name of the directory, not the pathname)
-name=Letourneau_MethylationEPIC_20201007
+name=Endometrial_Tissue_Dataset_450K
 
 # Name of the Sample Sheet inside your basedirectory that contains all the sample metadata. (Make sure the first three columns are 'Sample_Name','Sentrix_ID','Sentrix_Position')
-sample_sheet=SampleSheet-Letourneau_MethylationEPIC_20201007.csv
+sample_sheet=sample_sheet.csv
 
 
 
