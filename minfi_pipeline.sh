@@ -3,10 +3,10 @@
 script_base=/Volumes/Research_Data/My_Github/Minfi_Pipeline/
 
 # Pathname to the basedirectory that contains all files relevant to the study
-base_dir="/Volumes/Research_Data/Research_Data/Endometrial_Tissue/Endometrial_Tissue_Dataset_450K" 
+base_dir="/Volumes/Research_Data/Research_Data/Endometrial_Tissue/Endometriosis_Dataset_2_450K" 
 
 #Name of the basedirectory that contains all files relevant to the study (Make sure it is just the name of the directory, not the pathname)
-name=Endometrial_Tissue_Dataset_450K
+name=Endometriosis_Dataset_2_450K
 
 # Name of the Sample Sheet inside your basedirectory that contains all the sample metadata. (Make sure the first three columns are 'Sample_Name','Sentrix_ID','Sentrix_Position')
 sample_sheet=sample_sheet.csv
